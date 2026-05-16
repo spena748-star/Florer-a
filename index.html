@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nativa Floral | Boutique 3D Experience</title>
+<!-- Fuentes elegantes desde Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* --- ESTILOS GLOBALES --- */
+        :root {
+            --bg-color: #FDFBF7;       /* Fondo crema suave */
+            --text-dark: #2C2C2C;      /* Gris casi negro para lectura */
+            --accent-green: #5A6B5C;   /* Verde olivo apagado */
+            --accent-terracota: #A86B52; /* Terracota sutil */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- ENCABEZADO Y MENÚ --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 5%;
+            background-color: var(--bg-color);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            text-decoration: none;
+            color: var(--text-dark);
+            margin: 0 15px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
+        }
+
+        .btn-contacto {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-contacto:hover {
+            opacity: 0.9;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--accent-green);
+            margin-bottom: 5px;
+        }
+
+        .hero .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        /* --- SECCIÓN COLECCIÓN --- */
+        .main-title {
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            letter-spacing: 1px;
+        }
+
+        .productos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 20px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .producto-card {
+            background-color: transparent;
+            text-align: center;
+            padding: 10px;
+            perspective: 1200px; /* Incrementado para mayor profundidad visual */
+        }
+
+        /* Contenedor de imagen para controlar el zoom y efecto 3D */
+        .img-wrapper {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background-color: #f3efe6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: box-shadow 0.5s ease;
+        }
+
+        .img-wrapper img {
+            width: 130%; /* Incrementado para permitir mayor traslación sin ver bordes */
+            height: 130%;
+            object-fit: cover;
+            transition: transform 0.15s ease-out; /* Ajuste suave */
+            pointer-events: none; /* Dejar que el wrapper maneje los eventos */
+        }
+
+        .producto-card:hover .img-wrapper {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .producto-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-action {
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view {
+            background-color: var(--accent-green);
+            color: white;
+            border: 1px solid var(--accent-green);
+        }
+
+        .btn-buy {
+            background-color: var(--accent-terracota);
+            color: white;
+            border: 1px solid var(--accent-terracota);
+        }
+
+        .btn-action:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* --- ACCESOS INFERIORES --- */
+        .secciones-inferiores {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+            border-top: 1px solid #EAE5D9;
+            padding-top: 40px;
+        }
+
+        .inf-box {
+            text-align: center;
+            width: 45%;
+        }
+
+        .inf-box h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .inf-box p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .inf-box a {
+            color: var(--text-dark);
+            text-decoration: underline;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Accesibilidad: Respetar preferencias de movimiento reducido */
+        @media (prefers-reduced-motion: reduce) {
+            .img-wrapper img {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* --- ADAPTABILIDAD MÓVIL --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; text-align: center; }
+            nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .hero h1 { font-size: 2.5rem; }
+            .secciones-inferiores { flex-direction: column; gap: 40px; }
+            .inf-box { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<!-- MENÚ SUPERIOR -->
+<header>
+<div class="logo">Nativa Floral</div>
+<nav>
+<a href="#">Inicio</a>
+<a href="#">Colección</a>
+<a href="#">Suscripciones</a>
+<a href="#">Cuidado</a>
+</nav>
+<a class="btn-contacto" href="#">Contacto</a>
+</header>
+<!-- SECCIÓN PRINCIPAL (HERO) -->
+<section class="hero">
+<p class="subtitle">Arte Floral Silvestre</p>
+<h1>Nativa Floral</h1>
+<p class="tagline">Diseños Únicos, Naturaleza Pura</p>
+</section>
+<!-- TÍTULO DE LA TIENDA -->
+<h2 class="main-title">Nuestra Colección de Temporada</h2>
+<!-- CONTENEDOR DE PRODUCTOS -->
+<section class="productos-container">
+<!-- Tarjeta 1 -->
+<div class="producto-card">
+<div class="img-wrapper">
+<img alt="Ramo Alba" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwejdTo9AI5UGLPMBPGcu7n3Fottr3PtdYs7IVVc2N2GnLhFNlKMo_Mj3LZOX3IkqQY1MzmmndBDgpWrIj7gI_fepIvZp6pM3av0Q3MX6gzUd3laPxz1FeBPbuZDNsLJYyU7SEzMayvmrtJxGEmQsYIdgWl3Rws-qVcQv6sci94Wk5JnbYfkNH3p6IDJ4No0qpVo7JySUtaPJUybrF3VC7rUuHXkao1CJ7r4y5kC1kypKr6fYpwLRc8Q_NPRtp4b0pvEqzJvOSH5d0"/>
+</div>
+<h3>Alba</h3>
+<div class="btn-group">
+<a class="btn-action btn-view" href="#">Ver Ramo</a>
+<a class="btn-action btn-buy" href="#">Cómpralo Ahora</a>
+</div>
+</div>
+<!-- Tarjeta 2 -->
+<div class="producto-card">
+<div class="img-wrapper">
+<img alt="Ramo Tierra Madre" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxfH8QT3gInH6wCYPrmvEf3RHcBy_bdx1ndVCSVPWmNST5m-i-JJDkAbwZ1EZXO7Y4j-NulWlQYC6x-sod9mbWMKDQ53ooSi4fjvuyrvt1BejmEjTJJSNPAB0q272ZExqp0LjOEz51-6M44vgzLnU-a6zaEI6d-daDMtD4Kse3ERg7eZZaYLio0ItibZmqyppp_75chIg-s6b8sBaicRr1ZycX-sNTHXzC7HTNM4Xlq-Fp10N68l-vHV7KOBhkYMLkVYSIMSH8YbHN"/>
+</div>
+<h3>Tierra Madre</h3>
+<div class="btn-group">
+<a class="btn-action btn-view" href="#">Ver Ramo</a>
+<a class="btn-action btn-buy" href="#">Cómpralo Ahora</a>
+</div>
+</div>
+<!-- Tarjeta 3 -->
+<div class="producto-card">
+<div class="img-wrapper">
+<img alt="Ramo Poesía Silvestre" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-YyLCoKkzmIkHLtvzRyUufu8XKnnIfdXgkgfYcS22E2SeEzftay6wh429zuNP_C6gVtzKOt9w-cZHtCP4eFWHcFH3DROQCJ9XJFC2keajnb_IbTqZWYC0wlgePqkUq65r34JqSPszKBkW_xYOnBn5B8wdPmHJXBkIN1g02NLYZKmaufsUlxUCJJY4hwyEyjfn6y5guAwia4HqKUZvLf3O7yD_VA1ivgfTHwUZvCCTNQjYO4sHax8-MkGknoM21yAXzdLnQ_CROshy"/>
+</div>
+<h3>Poesía Silvestre</h3>
+<div class="btn-group">
+<a class="btn-action btn-view" href="#">Ver Ramo</a>
+<a class="btn-action btn-buy" href="#">Cómpralo Ahora</a>
+</div>
+</div>
+</section>
+<!-- SECCIONES DE VALOR AGREGADO -->
+<section class="secciones-inferiores">
+<div class="inf-box">
+<h2>Suscripciones</h2>
+<p>Recibe una curaduría floral exclusiva semanal o mensual directamente en tu puerta.</p>
+<a href="#">Explorar Planes</a>
+</div>
+<div class="inf-box">
+<h2>Cuidado de Flores</h2>
+<p>Aprende los secretos y pasos sencillos de nuestros floristas para prolongar su frescura.</p>
+<a href="#">Leer la Guía</a>
+</div>
+</section>
+<script>
+        // Efecto Parallax 3D Dinámico para las imágenes
+        const cards = document.querySelectorAll('.producto-card');
+
+        cards.forEach(card => {
+            const wrapper = card.querySelector('.img-wrapper');
+            const img = wrapper.querySelector('img');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left; // posición X dentro del elemento
+                const y = e.clientY - rect.top;  // posición Y dentro del elemento
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                // Calcular la rotación (incrementada a 30 grados para mayor intensidad)
+                const rotateX = ((y - centerY) / centerY) * -30;
+                const rotateY = ((x - centerX) / centerX) * 30;
+                
+                // Calcular traslación para acentuar el efecto de profundidad (efecto parallax)
+                const translateX = ((x - centerX) / centerX) * -15;
+                const translateY = ((y - centerY) / centerY) * -15;
+
+                // Aplicar transformación: Scale para acercar, Rotación 3D y Traslación opuesta
+                img.style.transform = `scale(1.25) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${translateX}px) translateY(${translateY}px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Resetear posición con suavidad
+                img.style.transform = 'scale(1) rotateX(0) rotateY(0) translateX(0) translateY(0)';
+            });
+        });
+    </script>
+</body></html>
